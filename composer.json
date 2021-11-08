@@ -13,7 +13,9 @@
     }
   ],
   "require": {
-    "php": ">=8.0.12"
+    "php": ">=8.0.12",
+    "ext-zlib": "*",
+    "ext-mbstring": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
