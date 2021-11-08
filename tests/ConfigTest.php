@@ -2,7 +2,7 @@
 
 namespace V2dmIM\Tests\Core;
 
-use V2dmIM\Core\Config;
+use V2dmIM\Core\struct\utils\validate\Config;
 use PHPUnit\Framework\TestCase;
 
 class ConfigTest extends TestCase
