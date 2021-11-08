@@ -12,6 +12,37 @@ declare(strict_types=1);
 // | Version: 2.0 2021/5/28 9:36
 // +----------------------------------------------------------------------
 
+use V2dmIM\Core\Config;
+
+/**
+ * config
+ * @param string $name
+ * @return mixed
+ * @author TaoGe <liangtao.gz@foxmail.com>
+ * @date   2021/11/8 14:01
+ */
+function config(string $name = ''): mixed
+{
+    try {
+        $instance = Config::instance();
+    } catch (Exception $e) {
+        return null;
+    }
+    $data = $instance->getData();
+    if (empty($name)) {
+        return $data;
+    } else {
+        $arr = explode('.', $name);
+        foreach ($arr as $key) {
+            if (array_key_exists($key, $data)) {
+                $data = $data[$key];
+            } else {
+                return null;
+            }
+        }
+        return $data;
+    }
+}
 
 /**
  * 将字符串转换成二进制
@@ -28,7 +59,7 @@ function str2bin(string $str, string $separator = ' '): string
     //2.unpack字符
     foreach ($arr as &$v) {
         $temp = unpack('H*', $v);
-        $v = base_convert($temp[1], 16, 2);
+        $v    = base_convert($temp[1], 16, 2);
         unset($temp);
     }
     return join($separator, $arr);
@@ -65,9 +96,9 @@ function think_im_md5(string $str, string $key = 'ThinkUCenter'): string
 /**
  * 字符串命名风格转换
  * type 0 将Java风格转换为C的风格 1 将C风格转换为Java的风格
- * @param string $name 字符串
- * @param int $type 转换类型
- * @param bool $ucfirst 首字母是否大写（驼峰规则）
+ * @param string $name    字符串
+ * @param int    $type    转换类型
+ * @param bool   $ucfirst 首字母是否大写（驼峰规则）
  * @return string
  */
 function parse_name(string $name, int $type = 0, bool $ucfirst = true): string
@@ -75,7 +106,7 @@ function parse_name(string $name, int $type = 0, bool $ucfirst = true): string
     if ($type) {
         $name = preg_replace_callback('/_([a-zA-Z])/', function ($match) {
             return strtoupper($match[1]);
-        }, $name);
+        },                            $name);
 
         return $ucfirst ? ucfirst($name) : lcfirst($name);
     }
@@ -99,9 +130,9 @@ function is_json(string $string): bool
 
 /**
  * Http服务成功返回
- * @param mixed $data
+ * @param mixed  $data
  * @param string $msg
- * @param array $header
+ * @param array  $header
  * @return string
  * @author       TaoGe <liangtao.gz@foxmail.com>
  * @date         2020/9/23 13:47
@@ -111,7 +142,7 @@ function success(mixed $data = '', string $msg = '', array $header = []): string
 {
     $result = [
         'code' => 1,
-        'msg' => $msg ?: 'success',
+        'msg'  => $msg ?: 'success',
         'data' => $data ?: '',
     ];
     return json_encode($result, JSON_UNESCAPED_UNICODE);
@@ -120,8 +151,8 @@ function success(mixed $data = '', string $msg = '', array $header = []): string
 /**
  * Http服务错误返回
  * @param string $msg
- * @param mixed $data
- * @param array $header
+ * @param mixed  $data
+ * @param array  $header
  * @return string
  * @author       TaoGe <liangtao.gz@foxmail.com>
  * @date         2020/9/23 13:47
@@ -131,7 +162,7 @@ function error(string $msg = '', mixed $data = '', array $header = []): string
 {
     $result = [
         'code' => 0,
-        'msg' => $msg ?: 'error',
+        'msg'  => $msg ?: 'error',
         'data' => $data ?: '',
     ];
     return json_encode($result, JSON_UNESCAPED_UNICODE);

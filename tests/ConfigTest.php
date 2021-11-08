@@ -11,8 +11,9 @@ class ConfigTest extends TestCase
     public function testInstance()
     {
         $path = __DIR__ . DS . 'config.php';
-        print_r($path);
-        $config = Config::instance($path);
-        $this->assertTrue($config->a === 1);
+        var_dump($path);
+        Config::instance($path);
+        var_dump(config('redis.connections.route.business.register.host'));
+        $this->assertTrue(config('redis.connections.route.business.register.host') === 'localhost-route');
     }
 }
