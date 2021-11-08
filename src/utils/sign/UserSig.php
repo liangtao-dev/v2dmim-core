@@ -12,7 +12,7 @@ declare(strict_types=1);
 // | Version: 2.0 2021/4/21 13:49
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct\utils\validate\utils\sign;
+namespace V2dmIM\Core\utils\validate\utils\sign;
 
 use Exception;
 

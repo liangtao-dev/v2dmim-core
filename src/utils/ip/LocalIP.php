@@ -12,7 +12,7 @@ declare(strict_types=1);
 // | Version: 2.0 2021/5/31 17:52
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct\utils\validate\utils\ip;
+namespace V2dmIM\Core\utils\ip;
 
 
 class LocalIP

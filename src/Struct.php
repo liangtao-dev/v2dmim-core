@@ -20,7 +20,7 @@ use JsonSerializable;
 use ReflectionClass;
 use ReflectionException;
 use Throwable;
-use V2dmIM\Core\struct\utils\validate\utils\log\Log;
+use V2dmIM\Core\utils\log\Log;
 
 abstract class Struct implements JsonSerializable, ArrayAccess
 {

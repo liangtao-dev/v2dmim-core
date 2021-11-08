@@ -12,7 +12,7 @@ declare(strict_types=1);
 // | Version: 2.0 2021/5/28 11:12
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct\utils\validate;
+namespace V2dmIM\Core\utils\validate;
 
 use BadMethodCallException;
 use Closure;

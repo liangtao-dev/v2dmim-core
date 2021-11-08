@@ -12,7 +12,7 @@ declare(strict_types=1);
 // | Version: 2.0 2020-02-26 14:21
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct\utils\validate\utils\log;
+namespace V2dmIM\Core\utils\log;
 
 /**
  * Class Color
