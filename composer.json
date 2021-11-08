@@ -23,6 +23,7 @@
       "V2dmIM\\Core\\": "src/"
     },
     "files": [
+      "src/constant.php",
       "src/helper.php"
     ]
   },
