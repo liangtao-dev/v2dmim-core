@@ -16,3 +16,6 @@ declare(strict_types=1);
 date_default_timezone_set('Asia/Shanghai');
 // 设置系统分隔符简写
 const DS = DIRECTORY_SEPARATOR;
+
+// 定义根目录
+define('ROOT_PATH', dirname(__DIR__, 3));
