@@ -10,7 +10,6 @@ class ConfigTest extends TestCase
 
     public function testInstance()
     {
-        print_r(ROOT_PATH);
         $path = __DIR__ . DS . 'config.php';
         print_r($path);
         $config = Config::instance($path);
