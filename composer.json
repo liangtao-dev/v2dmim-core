@@ -43,10 +43,6 @@
   },
   "repositories": [
     {
-      "type": "path",
-      "url": "../etcd"
-    },
-    {
       "type": "composer",
       "url": "https://mirrors.aliyun.com/composer/"
     }
