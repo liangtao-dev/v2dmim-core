@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="update packagist" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" singleton="false" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" runType="运行单个请求">
-    <method v="2" />
-  </configuration>
-</component>

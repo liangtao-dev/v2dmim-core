@@ -13,7 +13,9 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 namespace V2dmIM\Core;
 
+use JetBrains\PhpStorm\Pure;
 use ReflectionClass;
+use ReflectionClassConstant;
 use UnexpectedValueException;
 
 /**
@@ -82,6 +84,7 @@ abstract class Enum
         $this->strict = $strict;
     }
 
+    /** @noinspection PhpUnhandledExceptionInspection */
     private function populateConstants()
     {
         $class           = get_class($this);
@@ -119,7 +122,7 @@ abstract class Enum
      * here also.
      * @return bool True if enums are equal
      */
-    public function equals($object): bool
+    #[Pure] public function equals($object): bool
     {
         if (!($object instanceof Enum)) {
             return false;
@@ -127,4 +130,16 @@ abstract class Enum
         return $this->strict ? ($this->value === $object->getValue())
             : ($this->value == $object->getValue());
     }
+
+    /** @noinspection PhpUnhandledExceptionInspection */
+    static function __callStatic(string $name, array $arguments)
+    {
+        $ref       = new ReflectionClass(static::class);
+        $constants = $ref->getConstants(ReflectionClassConstant::IS_PUBLIC);
+        if (!isset($constants[$name])) {
+            return $ref->newInstance();
+        }
+        return $ref->newInstance($ref->getConstant($name));
+    }
+
 }

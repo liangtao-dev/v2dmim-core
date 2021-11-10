@@ -1,6 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Packagist.testUpdate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" singleton="false">
-    <TestRunner class="V2dmIM\Tests\Core\Packagist" file="$PROJECT_DIR$/tests/Packagist.php" method="testUpdate" scope="Method" />
-    <method v="2" />
-  </configuration>
-</component>

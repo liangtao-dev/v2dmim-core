@@ -1,25 +1,31 @@
 {
   "name": "liangtao/v2dmim-core",
+  "type": "library",
   "description": "PHP core class library",
   "keywords": [
-    "php"
+    "php",
+    "v2dmim",
+    "v2dmim-core"
   ],
-  "type": "library",
+  "homepage": "https://github.com/liangtao-top/v2dmim-core",
+  "license": "MIT",
   "authors": [
     {
       "name": "TaoGe",
       "email": "liangtao.gz@foxmail.com",
-      "role": "Developer"
+      "role": "Developer",
+      "homepage": "https://github.com/liangtao-top"
     }
   ],
   "require": {
     "php": ">=8.0.12",
     "ext-zlib": "*",
-    "ext-mbstring": "*"
+    "ext-mbstring": "*",
+    "liangtao/etcd-php": "@dev"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.5",
-    "guzzlehttp/guzzle": "^7.4"
+    "swoole/ide-helper": "@dev",
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
     "psr-4": {
@@ -35,5 +41,14 @@
       "V2dmIM\\Tests\\Core\\": "tests/"
     }
   },
-  "license": "MIT"
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../etcd"
+    },
+    {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
+    }
+  ]
 }
