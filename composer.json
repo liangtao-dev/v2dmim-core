@@ -21,7 +21,7 @@
     "php": ">=8.0.12",
     "ext-zlib": "*",
     "ext-mbstring": "*",
-    "liangtao/etcd-php": "@dev"
+    "liangtao/etcd-php": "^1.0.0"
   },
   "require-dev": {
     "swoole/ide-helper": "@dev",
