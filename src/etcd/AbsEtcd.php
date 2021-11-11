@@ -9,27 +9,29 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 // | Author: TaoGe <liangtao.gz@foxmail.com>
 // +----------------------------------------------------------------------
-// | Version: 2.0 2021/11/9 15:23
+// | Version: 2.0 2021/11/11 14:02
 // +----------------------------------------------------------------------
 namespace V2dmIM\Core\etcd;
 
 use Etcd\Client;
-use V2dmIM\Core\Struct;
+use JetBrains\PhpStorm\Pure;
 
-class Server extends Struct
+abstract class AbsEtcd
 {
+    /**
+     * etcd 客户端
+     * @var \Etcd\Client
+     */
+    protected Client $client;
 
-    //etcd client
-    private Client $etcdClient;
-    //租约
-    private $lease;
-    //设置租约时间返回
-    private $leaseResp;
-    //租约撤销
-    private $canclefunc;
-    //租约keepalieve相应chan
-    private $keepAliveChan;
-    //注册的key
-    private string $key;
+    /**
+     * 构造函数
+     * @param string $etcdAddress etcd服务器地址
+     * @param string $version     etcd服务器版本
+     */
+    #[Pure] public function __construct(string $etcdAddress = '127.0.0.1:2379', string $version = 'v3')
+    {
+        $this->client = new Client($etcdAddress, $version);
+    }
 
 }

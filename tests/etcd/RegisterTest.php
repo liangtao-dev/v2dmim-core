@@ -9,24 +9,33 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 // | Author: TaoGe <liangtao.gz@foxmail.com>
 // +----------------------------------------------------------------------
-// | Version: 2.0 2021/11/8 17:48
+// | Version: 2.0 2021/11/9 15:36
 // +----------------------------------------------------------------------
-namespace V2dmIM\Core\etcd;
+namespace V2dmIM\Tests\Core\etcd;
 
-use V2dmIM\Core\Enum;
+use PHPUnit\Framework\TestCase;
+use V2dmIM\Core\etcd\Register;
+use V2dmIM\Core\etcd\Schema;
 
-/**
- * 服务目录
- * @method static GATEWAY()
- * @method static HTTP()
- */
-class Schema extends Enum
+class RegisterTest extends TestCase
 {
 
-    // 长连接网关服务
-    const GATEWAY = 'gateway';
+    private Register $service;
 
-    // 短连接API服务
-    const HTTP = 'http';
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->service = new Register();
+    }
+
+    public function testRegister()
+    {
+        $this->service->register(Schema::GATEWAY(), '192.168.0.200', 9502, 3);
+    }
+
+    public function testUnregister()
+    {
+        $this->service->unregister();
+    }
 
 }
