@@ -47,6 +47,7 @@ abstract class Enum
      * Constants value are enum values.
      * @param bool $includeDefault If true, default value is included into return
      * @return array Array with constant values
+     * @noinspection PhpUnused
      */
     public function getConstList(bool $includeDefault = false): array
     {

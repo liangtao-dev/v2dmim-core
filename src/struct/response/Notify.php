@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace V2dmIM\Core\struct\response;
 
-use V2dmIM\Core\struct\EventDefinition;
+use V2dmIM\Core\enum\EventType;
 use V2dmIM\Core\Struct;
 
 /**
@@ -24,7 +24,7 @@ use V2dmIM\Core\Struct;
 class Notify extends Struct
 {
 
-    private EventDefinition $event;
+    private EventType $event;
 
     private mixed $data;
 
@@ -64,17 +64,17 @@ class Notify extends Struct
     }
 
     /**
-     * @return \V2dmIM\Core\struct\EventDefinition
+     * @return \V2dmIM\Core\enum\EventType
      */
-    public function getEvent(): EventDefinition
+    public function getEvent(): EventType
     {
         return $this->event;
     }
 
     /**
-     * @param \V2dmIM\Core\struct\EventDefinition $event
+     * @param \V2dmIM\Core\enum\EventType $event
      */
-    public function setEvent(EventDefinition $event): void
+    public function setEvent(EventType $event): void
     {
         $this->event = $event;
     }

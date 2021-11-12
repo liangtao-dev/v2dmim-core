@@ -12,7 +12,7 @@ declare(strict_types=1);
 // | Version: 2.0 2021/6/19 13:55
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct\traits;
+namespace V2dmIM\Core\traits;
 
 trait Singleton
 {

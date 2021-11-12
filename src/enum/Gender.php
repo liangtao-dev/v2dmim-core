@@ -9,22 +9,23 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 // | Author: TaoGe <liangtao.gz@foxmail.com>
 // +----------------------------------------------------------------------
-// | Version: 2.0 2021/5/28 12:22
+// | Version: 2.0 2021/5/26 14:17
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct;
+namespace V2dmIM\Core\enum;
 
 use V2dmIM\Core\Enum;
 
 /**
- * 设备类型
+ * 性别
  * @package app\struct
  */
-class Device extends Enum
+class Gender extends Enum
 {
-    const WEB = 'Web';
-
-    const APP = 'App';
-
-    const CLIENT = 'Client';
+    // 未知
+    const GENDER_UNKNOWN = 0;
+    // 男
+    const GENDER_MALE = 1;
+    // 女
+    const GENDER_FEMALE = 2;
 }

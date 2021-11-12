@@ -12,11 +12,11 @@ declare(strict_types=1);
 // | Version: 2.0 2021/4/17 17:56
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct;
+namespace V2dmIM\Core\enum;
 
 use V2dmIM\Core\Enum;
 
-class EventDefinition extends Enum
+class EventType extends Enum
 {
 
     // SDK 已经成功连接到云服务器

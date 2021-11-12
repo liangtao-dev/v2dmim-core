@@ -9,23 +9,23 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 // | Author: TaoGe <liangtao.gz@foxmail.com>
 // +----------------------------------------------------------------------
-// | Version: 2.0 2021/5/26 14:17
+// | Version: 2.0 2021/5/26 14:20
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\struct;
+namespace V2dmIM\Core\enum;
 
 use V2dmIM\Core\Enum;
 
 /**
- * 性别
+ * 好友选项
  * @package app\struct
  */
-class Gender extends Enum
+class AllowType extends Enum
 {
-    // 未知
-    const GENDER_UNKNOWN = 0;
-    // 男
-    const GENDER_MALE = 1;
-    // 女
-    const GENDER_FEMALE = 2;
+    // 当被人加好友时：允许任何人添加自己为好友
+    const ALLOW_ANY = 0;
+    // 当被人加好友时：需要经过自己确认才能添加自己为好友
+    const NEED_CONFIRM = 1;
+    // 当被人加好友时：不允许任何人添加自己为好友
+    const DENY_ANY = 2;
 }

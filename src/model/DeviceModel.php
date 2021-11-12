@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace V2dmIM\Core\model;
 
+use V2dmIM\Core\enum\DeviceType;
 use V2dmIM\Core\Model;
-use V2dmIM\Core\struct\Device;
 
 class DeviceModel extends Model
 {
@@ -24,7 +24,7 @@ class DeviceModel extends Model
 
     private string $ip;
 
-    private Device $device;
+    private DeviceType $device;
 
     private string $deviceToken = '';
 
@@ -61,17 +61,17 @@ class DeviceModel extends Model
     }
 
     /**
-     * @return \V2dmIM\Core\struct\Device
+     * @return \V2dmIM\Core\enum\DeviceType
      */
-    public function getDevice(): Device
+    public function getDevice(): DeviceType
     {
         return $this->device;
     }
 
     /**
-     * @param \V2dmIM\Core\struct\Device $device
+     * @param \V2dmIM\Core\enum\DeviceType $device
      */
-    public function setDevice(Device $device): void
+    public function setDevice(DeviceType $device): void
     {
         $this->device = $device;
     }

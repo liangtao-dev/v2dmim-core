@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace V2dmIM\Core\model;
 
+use V2dmIM\Core\enum\DeviceType;
 use V2dmIM\Core\Model;
-use V2dmIM\Core\struct\Device;
 
 /**
  * 用户在线记录模型
@@ -29,7 +29,7 @@ class OnlineModel extends Model
     // 连接 ID
     private int $fd;
     // 登录设备
-    private Device $device;
+    private DeviceType $device;
     // 网关服务器 IP
     private string $gatewayIp;
     // 客户端登录 IP
@@ -72,17 +72,17 @@ class OnlineModel extends Model
     }
 
     /**
-     * @return \V2dmIM\Core\struct\Device
+     * @return \V2dmIM\Core\enum\DeviceType
      */
-    public function getDevice(): Device
+    public function getDevice(): DeviceType
     {
         return $this->device;
     }
 
     /**
-     * @param \V2dmIM\Core\struct\Device $device
+     * @param \V2dmIM\Core\enum\DeviceType $device
      */
-    public function setDevice(Device $device): void
+    public function setDevice(DeviceType $device): void
     {
         $this->device = $device;
     }
