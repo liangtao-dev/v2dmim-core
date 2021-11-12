@@ -95,48 +95,48 @@ class Log
     public static function info(string $string)
     {
         $colors = new Log();
-        $value  = 'Info    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'info    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "light_gray");
     }
 
     public static function push(string $string)
     {
         $colors = new Log();
-        $value  = 'Push    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'push    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "purple");
     }
 
     public static function task(string $string)
     {
         $colors = new Log();
-        $value  = 'Task    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'task    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "cyan");
     }
 
     public static function go(string $string)
     {
         $colors = new Log();
-        $value  = 'Go      [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'go      [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "brown");
     }
 
     public static function success(string $string)
     {
         $colors = new Log();
-        $value  = 'Success [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'success [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "green");
     }
 
     public static function warning(string $string)
     {
         $colors = new Log();
-        $value  = 'Warning [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'warning [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "yellow");
     }
 
     public static function error(string $string)
     {
-        $value  = 'Error   [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'error   [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         $colors = new Log();
         echo $colors->getColoredString($value, "red");
     }

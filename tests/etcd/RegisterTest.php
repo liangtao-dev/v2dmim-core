@@ -25,7 +25,7 @@ class RegisterTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->service = new Register();
+        $this->service = new Register('192.168.0.255:2379', 'v3beta');
     }
 
     public function testRegister()
