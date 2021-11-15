@@ -13,6 +13,7 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 
 use V2dmIM\Core\Config;
+use V2dmIM\Core\utils\Result;
 
 /**
  * config
@@ -130,40 +131,26 @@ function is_json(string $string): bool
  * Http服务成功返回
  * @param mixed  $data
  * @param string $msg
- * @param array  $header
  * @return string
  * @author       TaoGe <liangtao.gz@foxmail.com>
  * @date         2020/9/23 13:47
- * @noinspection PhpUnusedParameterInspection
  */
-function success(mixed $data = '', string $msg = '', array $header = []): string
+function success(mixed $data = '', string $msg = ''): string
 {
-    $result = [
-        'code' => 1,
-        'msg'  => $msg ?: 'success',
-        'data' => $data ?: '',
-    ];
-    return json_encode($result, JSON_UNESCAPED_UNICODE);
+    return Result::y($data, $msg ?: 'success');
 }
 
 /**
  * Http服务错误返回
- * @param string $msg
- * @param mixed  $data
- * @param array  $header
+ * @param string $msg  错误信息
+ * @param int    $code 错误代码
  * @return string
  * @author       TaoGe <liangtao.gz@foxmail.com>
  * @date         2020/9/23 13:47
- * @noinspection PhpUnusedParameterInspection
  */
-function error(string $msg = '', mixed $data = '', array $header = []): string
+function error(string $msg = '', int $code = -1): string
 {
-    $result = [
-        'code' => 0,
-        'msg'  => $msg ?: 'error',
-        'data' => $data ?: '',
-    ];
-    return json_encode($result, JSON_UNESCAPED_UNICODE);
+    return Result::n($msg ?: 'fail', '', ['code' => $code]);
 }
 
 /**
