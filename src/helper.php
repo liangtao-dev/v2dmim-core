@@ -25,13 +25,11 @@ function config(string $name = ''): mixed
 {
     try {
         $instance = Config::instance();
-    } catch (Exception $e) {
+    } catch (Exception) {
         return null;
     }
     $data = $instance->getData();
-    if (empty($name)) {
-        return $data;
-    } else {
+    if (!empty($name)) {
         $arr = explode('.', $name);
         foreach ($arr as $key) {
             if (array_key_exists($key, $data)) {
@@ -40,8 +38,8 @@ function config(string $name = ''): mixed
                 return null;
             }
         }
-        return $data;
     }
+    return $data;
 }
 
 /**
@@ -170,6 +168,9 @@ function error(string $msg = '', mixed $data = '', array $header = []): string
 
 /**
  * 生成GUID
+ * @return string
+ * @author TaoGe <liangtao.gz@foxmail.com>
+ * @date   2021/11/15 11:53
  */
 function string_make_guid(): string
 {
@@ -180,6 +181,19 @@ function string_make_guid(): string
     }
 
     return sprintf('%04x%04x%04x%04x%04x%04x%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+}
+
+/**
+ * 不区分大小写的in_array实现
+ * @param $value
+ * @param $array
+ * @return bool
+ * @author TaoGe <liangtao.gz@foxmail.com>
+ * @date   2019-12-20 15:02
+ */
+function in_array_case($value, $array): bool
+{
+    return in_array(strtolower($value), array_map('strtolower', $array));
 }
 
 /**
