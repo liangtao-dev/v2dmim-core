@@ -45,7 +45,7 @@ class Result
     public static function y(mixed $data, string $msg = 'success', array $append = []): bool|string
     {
         $result = [
-            'code' => 0,
+            'code' => 1,
             'msg'  => $msg,
             'data' => $data,
             'time' => time(),
@@ -65,7 +65,7 @@ class Result
     public static function n(string $msg = 'fail', mixed $data = '', array $append = []): bool|string
     {
         $result = [
-            'code' => -1,
+            'code' => 0,
             'msg'  => $msg,
             'data' => $data,
             'time' => time(),

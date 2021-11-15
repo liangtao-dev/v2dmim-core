@@ -148,7 +148,7 @@ function success(mixed $data = '', string $msg = ''): string
  * @author       TaoGe <liangtao.gz@foxmail.com>
  * @date         2020/9/23 13:47
  */
-function error(string $msg = '', int $code = -1): string
+function error(string $msg = '', int $code = 0): string
 {
     return Result::n($msg ?: 'fail', '', ['code' => $code]);
 }
