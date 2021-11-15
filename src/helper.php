@@ -13,7 +13,7 @@ declare(strict_types=1);
 // +----------------------------------------------------------------------
 
 use V2dmIM\Core\Config;
-use V2dmIM\Core\utils\Result;
+use V2dmIM\Core\Result;
 
 /**
  * config
