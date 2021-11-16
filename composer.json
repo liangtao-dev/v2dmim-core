@@ -8,7 +8,7 @@
     "v2dmim-core"
   ],
   "homepage": "https://github.com/liangtao-top/v2dmim-core",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "TaoGe",
