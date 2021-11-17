@@ -12,7 +12,7 @@ declare(strict_types=1);
 // | Date: 2021/5/8 15:04
 // +----------------------------------------------------------------------
 
-namespace V2dmIM\Core\utils\pool;
+namespace V2dmIM\Core\pool;
 
 use Swoole\Database\PDOConfig;
 
@@ -39,13 +39,13 @@ class PDOPool
         //判断$instance是否是Singleton的对象，不是则创建
         if (is_null(self::$instance)) {
             self::$instance = new \Swoole\Database\PDOPool((new PDOConfig)
-                                                               ->withHost(config('database.hostname'))
-                                                               ->withPort(config('database.hostport'))
+                                                               ->withHost(config('mysql.hostname'))
+                                                               ->withPort(config('mysql.hostport'))
                                                                // ->withUnixSocket('/tmp/mysql.sock')
-                                                               ->withDbName(config('database.database'))
-                                                               ->withCharset(config('database.charset'))
-                                                               ->withUsername(config('database.username'))
-                                                               ->withPassword(config('database.password'))
+                                                               ->withDbName(config('mysql.database'))
+                                                               ->withCharset(config('mysql.charset'))
+                                                               ->withUsername(config('mysql.username'))
+                                                               ->withPassword(config('mysql.password'))
 //                                                               ->withOptions([8 => 0, 3 => 2, 11 => 0, 17 => false, 20 => false])
             );
         }
