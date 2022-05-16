@@ -14,7 +14,8 @@ declare(strict_types=1);
 
 namespace V2dmIM\Core;
 
-use Exception;
+
+use RuntimeException;
 
 /**
  * Class Config
@@ -32,64 +33,94 @@ class Config
 
     /**
      * 声明一个数组 用于存放读取来的数据库类信息
-     * @var array|mixed
+     * @var array
      */
-    private array $data;
+    private array $data = [];
 
     /**
      * 首先将类的构造函数和克隆方法写死
-     * @param string $path
      */
-    private function __construct(string $path)
+    private function __construct()
     {
-        //将配置数组赋给成员变量
-        $this->data = include($path);
     }
 
     /**
      * 写一个静态方法来声明并判断实例，存在则返回已存在的实例，不存在则实例化新的，保证实例对象的唯一性
-     * @param string $path
      * @return static
-     * @throws \Exception
      * @author TaoGe <liangtao.gz@foxmail.com>
      * @date   2021/11/8 11:27
      */
-    public static function instance(string $path = ''): static
+    public static function instance(): static
     {
         if (is_null(self::$instance)) {
-            if (empty($path)) {
-                throw new Exception("Config the first instantiation must pass parameters");
-            }
-            if (!file_exists($path)) {
-                throw new Exception("config file does not exist. " . $path);
-            }
-            self::$instance = new self($path);
+            self::$instance = new self();
         }
         return self::$instance;
     }
 
     /**
-     * getData
-     * @return array
+     * 载入配置
+     * @param string $path
      * @author TaoGe <liangtao.gz@foxmail.com>
-     * @date   2021/11/8 11:27
+     * @date   2022/5/13 15:03
+     */
+    public function load(string $path = ''): void
+    {
+        if (empty($path)) {
+            throw new RuntimeException("Config the first instantiation must pass parameters");
+        }
+        if (!file_exists($path)) {
+            throw new RuntimeException("config file does not exist. " . $path);
+        }
+        $this->data = include($path);
+    }
+
+    /**
+     * 追加配置
+     * @param array $values
+     * @author       TaoGe <liangtao.gz@foxmail.com>
+     * @date         2021/11/8 11:26
      * @noinspection PhpUnused
      */
-    public function getData(): array
+    public function append(array $values): void
+    {
+        $this->data = array_merge($this->data, $values);
+    }
+
+    /**
+     * 获取全部配置
+     * @return array
+     * @author       TaoGe <liangtao.gz@foxmail.com>
+     * @date         2021/11/8 11:27
+     * @noinspection PhpUnused
+     */
+    public function all(): array
     {
         return $this->data;
     }
 
     /**
-     * setData
-     * @param array $data
-     * @author TaoGe <liangtao.gz@foxmail.com>
-     * @date   2021/11/8 11:26
-     * @noinspection PhpUnused
+     * 获取配置
+     * @param string $key
+     * @return mixed
+     * @author       TaoGe <liangtao.gz@foxmail.com>
+     * @date         2021/11/8 11:27
      */
-    public function setData(array $data): void
+    public static function get(string $key): mixed
     {
-        $this->data = $data;
+        return Config::instance()->$key;
+    }
+
+    /**
+     * 设置配置
+     * @param string $key
+     * @param        $value
+     * @author TaoGe <liangtao.gz@foxmail.com>
+     * @date   2022/5/13 15:08
+     */
+    public static function set(string $key, $value): void
+    {
+        Config::instance()->$key = $value;
     }
 
     /**
@@ -115,7 +146,7 @@ class Config
      * @author TaoGe <liangtao.gz@foxmail.com>
      * @date   2021/11/8 11:27
      */
-    public function __set($key, $value)
+    public function __set($key, $value): void
     {
         $this->data[$key] = $value;
     }

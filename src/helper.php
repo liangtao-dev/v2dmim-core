@@ -24,23 +24,19 @@ use V2dmIM\Core\Result;
  */
 function config(string $name = ''): mixed
 {
-    try {
-        $instance = Config::instance();
-    } catch (Exception) {
-        return null;
+    $value = Config::instance()->all();
+    if (empty($name)) {
+        return $value;
     }
-    $data = $instance->getData();
-    if (!empty($name)) {
-        $arr = explode('.', $name);
-        foreach ($arr as $key) {
-            if (array_key_exists($key, $data)) {
-                $data = $data[$key];
-            } else {
-                return null;
-            }
+    $arr = explode('.', $name);
+    foreach ($arr as $key) {
+        if (array_key_exists($key, $value)) {
+            $value = $value[$key];
+        } else {
+            return null;
         }
     }
-    return $data;
+    return $value;
 }
 
 /**

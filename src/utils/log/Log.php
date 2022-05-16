@@ -92,6 +92,13 @@ class Log
         return array_keys($this->background_colors);
     }
 
+    public static function debug(string $string)
+    {
+        $colors = new Log();
+        $value  = 'debug    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        echo $colors->getColoredString($value, "light_gray");
+    }
+
     public static function info(string $string)
     {
         $colors = new Log();
