@@ -95,7 +95,7 @@ class Log
     public static function debug(string $string)
     {
         $colors = new Log();
-        $value  = 'debug    [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
+        $value  = 'debug   [' . date('Y-m-d H:i:s') . ']  ----  ' . $string;
         echo $colors->getColoredString($value, "light_gray");
     }
 

@@ -33,19 +33,18 @@ class NacosUtils
      * @param string $ip   服务IP
      * @param int    $port 服务端口
      * @param int    $ms   心跳间隔
-     * @throws \Swoole\Coroutine\Http\Client\Exception
      * @author TaoGe <liangtao.gz@foxmail.com>
      * @date   2022/5/16 11:15
      */
     public static function registerAndHeart(string $host, string $name, string $ip, int $port, int $ms = 5000): void
     {
-        $nacos = new Nacos($host);
-        $res   = $nacos->join($name, $ip, $port);
-        if ($res !== true) {
-            throw new RuntimeException("swoole_service_$name $ip:$port registration failed.");
-        }
-        $naming = Naming::init("swoole_service_$name", $ip, $port);
         try {
+            $nacos = new Nacos($host);
+            $res   = $nacos->join($name, $ip, $port);
+            if ($res !== true) {
+                throw new RuntimeException("swoole_service_$name $ip:$port registration failed.");
+            }
+            $naming   = Naming::init("swoole_service_$name", $ip, $port);
             $instance = $naming->get();
             if ($instance === null) {
                 throw new RuntimeException("swoole_service_$name $ip:$port not found.");
@@ -58,9 +57,9 @@ class NacosUtils
             return;
         }
         Timer::tick($ms, function (int $timer_id) use ($naming, $instance, $host, $name, $ip, $port, $ms) {
-            Log::debug("Timer::tick#$timer_id swoole_service_$name {$instance->getIp()}:{$instance->getPort()} heartbeat after {$ms}ms.");
             try {
-                $naming->beat($instance);
+                $res = $naming->beat($instance);
+                Log::debug("Timer::tick#$timer_id swoole_service_$name {$instance->getIp()}:{$instance->getPort()} client beat interval {$res->getClientBeatInterval()}ms.");
             } catch (Throwable $e) {
                 Log::error($e->getMessage());
                 if (Timer::clear($timer_id)) {
